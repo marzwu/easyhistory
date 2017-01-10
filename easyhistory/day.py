@@ -23,13 +23,13 @@ class Day:
 
     def init(self):
         stock_codes = self.store.init_stock_codes
-        pool = ThreadPool(10)
+        pool = ThreadPool()
         pool.map(self.init_stock_history, stock_codes)
 
     def update(self):
         """ 更新已经下载的历史数据 """
         stock_codes = self.store.update_stock_codes
-        pool = ThreadPool(2)
+        pool = ThreadPool()
         pool.map(self.update_single_code, stock_codes)
 
     def update_single_code(self, stock_code):
